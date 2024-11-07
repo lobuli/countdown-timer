@@ -1,63 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Countdown Timer</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f4f4f9;
-    }
-    .countdown {
-      text-align: center;
-      font-size: 2em;
-      color: #333;
-    }
-    .time {
-      font-weight: bold;
-      color: #e63946;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Christmas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="countdown">
-    <h1>Countdown Timer</h1>
-    <p>Time left until the event:</p>
-    <p class="time" id="countdown"></p>
+  <div class="container">
+    <h1>Countdown to Christmas 2024</h1>
+    <div id="countdown" class="hidden">
+        <div><span id="days">0</span> Days</div>
+        <div><span id="hours">0</span> Hours</div>
+        <div><span id="minutes">0</span> Minutes</div>
+        <div><span id="seconds">0</span> Seconds</div>
+    </div>
   </div>
-
-  <script>
-    // Set the date for the countdown
-    const eventDate = new Date("December 31, 2024 23:59:59").getTime();
-
-    // Update the countdown every second
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const timeLeft = eventDate - now;
-
-      // Calculate days, hours, minutes, and seconds left
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-      // Display the result
-      document.getElementById("countdown").innerHTML = 
-        `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-      // If the countdown is over, show a message
-      if (timeLeft < 0) {
-        clearInterval(interval);
-        document.getElementById("countdown").innerHTML = "The event has started!";
-      }
-    }, 1000);
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
-
